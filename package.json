@@ -1,0 +1,13 @@
+{
+    "name": "snipescript",
+    "version": "1.0.18",
+    "description": "A custom TypeScript compiler that compiles a specific folder and generates an error tree.",
+    "main": "snipescript.js",
+    "dependencies": {
+        "typescript": "^4.5.2",
+        "fs-extra": "^10.0.0"
+    },
+    "bin": {
+        "snipescript": "./snipescript.js"
+    }
+}
