@@ -1,9 +1,23 @@
 #!/usr/bin/env node
-const ts = require("typescript");
-const fs = require("fs");
-const path = require("path");
+import * as ts from "typescript";
+import * as fs from "fs";
+import * as path from "path";
 
-function readFilesRecursively(folderPath) {
+interface ErrorDetails {
+  code: number;
+  message: string;
+  file: string;
+  location: {
+    line: number;
+    character: number;
+  };
+}
+
+interface Errors {
+  [key: string]: ErrorDetails[];
+}
+
+function readFilesRecursively(folderPath: string): string[] {
   const files = [];
   const entries = fs.readdirSync(folderPath, { withFileTypes: true });
 
@@ -21,8 +35,11 @@ function readFilesRecursively(folderPath) {
   return files;
 }
 
-function filterErrorsByFolderPath(errorTree, folderPath) {
-  const filteredErrors = {};
+function filterErrorsByFolderPath(
+  errorTree: Errors,
+  folderPath: string
+): Errors {
+  const filteredErrors: Errors = {};
 
   for (const [filePath, errors] of Object.entries(errorTree)) {
     if (filePath.startsWith(folderPath)) {
@@ -33,7 +50,7 @@ function filterErrorsByFolderPath(errorTree, folderPath) {
   return filteredErrors;
 }
 
-function createFileNode(filePath, errors) {
+function createFileNode(filePath: string, errors: any[]): any {
   const errorFree = !errors || errors.length === 0;
   return {
     name: path.basename(filePath),
@@ -43,7 +60,7 @@ function createFileNode(filePath, errors) {
   };
 }
 
-function createDirectoryNode(directoryPath, children) {
+function createDirectoryNode(directoryPath: string, children: any[]): any {
   return {
     name: path.basename(directoryPath),
     type: "directory",
@@ -51,15 +68,18 @@ function createDirectoryNode(directoryPath, children) {
   };
 }
 
-function compile(fileNames, options) {
+function compile(
+  fileNames: string[],
+  options: ts.CompilerOptions
+): Record<string, any> {
   const program = ts.createProgram(fileNames, options);
   const allDiagnostics = ts.getPreEmitDiagnostics(program);
 
-  const errors = {};
+  const errors: Errors = {};
   const ignoredErrorCodes = [17004, 1259, 1208, 2339, 2351]; // Add the error codes you want to ignore
 
   allDiagnostics.forEach((diagnostic) => {
-    if (diagnostic.file) {
+    if (diagnostic.file && diagnostic.start) {
       const fileName = diagnostic.file.fileName;
       const { line, character } = ts.getLineAndCharacterOfPosition(
         diagnostic.file,
@@ -89,7 +109,7 @@ function compile(fileNames, options) {
   return errors;
 }
 
-function buildFileTree(folderPath, errors) {
+function buildFileTree(folderPath: string, errors: Record<string, any>): any {
   const entries = fs.readdirSync(folderPath, { withFileTypes: true });
   const children = [];
 
@@ -105,7 +125,7 @@ function buildFileTree(folderPath, errors) {
   return createDirectoryNode(folderPath, children);
 }
 
-function main() {
+function main(): void {
   const targetFolder = process.argv[2];
   const fileNames = readFilesRecursively(targetFolder);
   const options = {

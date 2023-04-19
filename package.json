@@ -1,16 +1,15 @@
 {
     "name": "snipescript",
-    "version": "1.0.34",
+    "version": "1.0.35",
     "description": "A custom TypeScript compiler that compiles a specific folder and generates an error tree.",
     "main": "snipescript.js",
     "dependencies": {
-        "typescript": "^4.5.2",
         "fs-extra": "^10.0.0"
     },
     "bin": {
-        "snipescript": "./snipescript.js",
-        "ss": "./snipescript.js",
-        "snipe": "./snipescript.js"
+        "snipescript": "./dist/snipescript.js",
+        "ss": "./dist/snipescript.js",
+        "snipe": "./dist/snipescript.js"
     },
     "preferGlobal": true,
     "keywords": [
@@ -18,5 +17,9 @@
         "Error filtering",
         "CLI",
         "Compiler"
-    ]
+    ],
+    "devDependencies": {
+        "@types/node": "^18.15.12",
+        "typescript": "^5.0.4"
+    }
 }
