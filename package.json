@@ -1,6 +1,6 @@
 {
     "name": "snipescript",
-    "version": "1.0.35",
+    "version": "1.0.44",
     "description": "A custom TypeScript compiler that compiles a specific folder and generates an error tree.",
     "main": "snipescript.js",
     "dependencies": {

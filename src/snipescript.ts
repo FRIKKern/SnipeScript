@@ -125,6 +125,29 @@ function buildFileTree(folderPath: string, errors: Record<string, any>): any {
   return createDirectoryNode(folderPath, children);
 }
 
+function formatFileTree(tree: any, indent = ""): string {
+  let result = "";
+
+  if (tree.type === "file") {
+    const isError = tree.errors && tree.errors.length > 0;
+    result += `${indent}📜 ${tree.name}`;
+
+    if (isError) {
+      result += "\n";
+      for (const error of tree.errors) {
+        result += `${indent}     ${error.message}\n`;
+      }
+    }
+  } else if (tree.type === "directory") {
+    result += `${indent}📂 ${tree.name}\n`;
+    for (const child of tree.children) {
+      result += formatFileTree(child, indent + " ┃ ");
+    }
+  }
+
+  return result;
+}
+
 function main(): void {
   const targetFolder = process.argv[2];
   const fileNames = readFilesRecursively(targetFolder);
@@ -143,7 +166,9 @@ function main(): void {
   const errors = compile(filteredFileNames, options);
   const filteredErrors = filterErrorsByFolderPath(errors, targetFolder); // Filter errors based on the folder path
   const fileTree = buildFileTree(targetFolder, errors);
+  const formattedFileTree = formatFileTree(fileTree);
 
+  console.log(formattedFileTree);
   console.log(JSON.stringify({ fileTree, errorTree: filteredErrors }, null, 2)); // Log the filtered error tree
 
   // Save the output to a file

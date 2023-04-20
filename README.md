@@ -50,6 +50,69 @@ const options = {
 };
 ```
 
+## How it works
+
+```
+───────────────────────────
+       Target Folder           Execute in CLI:
+   (provided by the user)      "snipescript <folder-path>"
+───────────────────────────
+             │
+             ▼
+───────────────────────────
+       Main Function
+  (entry point of the app)
+───────────────────────────
+             │
+             ▼
+───────────────────────────
+    readFilesRecursively
+ (get list of all files in
+      target folder)
+────────────┬──────────────
+            │
+            ▼
+───────────────────────────
+   Filtered File Names
+ (files within the target
+           folder)
+────────────┬──────────────
+             │
+             ▼
+───────────────────────────
+        Compilation
+(use TypeScript compiler to
+   check for syntax errors)
+────────────┬──────────────
+             │
+             ▼
+───────────────────────────
+   Filtered Error Details
+ (errors within the target
+           folder)
+────────────┬──────────────
+             │
+             ▼
+───────────────────────────
+  Generated File and Folder
+          Structure
+────────────┬──────────────
+             │
+             ▼
+───────────────────────────
+   File and Directory Nodes
+(used to display the file
+      and folder tree)
+────────────┬──────────────
+             │
+             ▼
+───────────────────────────
+   Error Details Object
+(associated with each file
+        and directory)
+───────────────────────────
+```
+
 ## License
 
 SnipeScript is released under the MIT License.
