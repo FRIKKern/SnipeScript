@@ -2,6 +2,8 @@
 
 SnipeScript is a custom TypeScript compiler that compiles a specific folder and generates an error tree. It allows you to selectively filter errors by error codes and folder paths. The output of the program is a JSON file containing the error tree, making it easy to analyze and manage the TypeScript compilation errors.
 
+Sorry for breaking up this generic AI generated text, but I like to tell you about my lord and saviour Mr. Ai. Well, actually i did make this project with my own AI purposes in mind. Anyways, back to the script!
+
 ## Features
 
 - Compiles a specific folder containing TypeScript files.
@@ -77,35 +79,35 @@ const options = {
  (files within the target
            folder)
 ────────────┬──────────────
-             │
-             ▼
+            │
+            ▼
 ───────────────────────────
         Compilation
 (use TypeScript compiler to
    check for syntax errors)
 ────────────┬──────────────
-             │
-             ▼
+            │
+            ▼
 ───────────────────────────
    Filtered Error Details
  (errors within the target
            folder)
 ────────────┬──────────────
-             │
-             ▼
+            │
+            ▼
 ───────────────────────────
   Generated File and Folder
           Structure
 ────────────┬──────────────
-             │
-             ▼
+            │
+            ▼
 ───────────────────────────
    File and Directory Nodes
 (used to display the file
       and folder tree)
 ────────────┬──────────────
-             │
-             ▼
+            │
+            ▼
 ───────────────────────────
    Error Details Object
 (associated with each file

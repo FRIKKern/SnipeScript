@@ -119,11 +119,15 @@ function formatFileTree(tree, indent = "") {
                 result += `${indent}     ${error.message}\n`;
             }
         }
+        else {
+            result += "\n";
+        }
     }
     else if (tree.type === "directory") {
         result += `${indent}📂 ${tree.name}\n`;
+        const childIndent = tree.name === "src" ? " ┣ " : " ┃ ";
         for (const child of tree.children) {
-            result += formatFileTree(child, indent + " ┃ ");
+            result += formatFileTree(child, indent + childIndent);
         }
     }
     return result;
@@ -142,7 +146,11 @@ function main() {
     const errors = compile(filteredFileNames, options);
     const filteredErrors = filterErrorsByFolderPath(errors, targetFolder); // Filter errors based on the folder path
     const fileTree = buildFileTree(targetFolder, errors);
-    const formattedFileTree = formatFileTree(fileTree);
+    const formattedFileTree = formatFileTree(fileTree, " ┣ ");
+    console.log(formattedFileTree);
+    // Save the tree to a file
+    fs.writeFileSync("tree.txt", formattedFileTree, "utf-8");
+    console.log("Tree saved to tree.txt");
     console.log(formattedFileTree);
     console.log(JSON.stringify({ fileTree, errorTree: filteredErrors }, null, 2)); // Log the filtered error tree
     // Save the output to a file

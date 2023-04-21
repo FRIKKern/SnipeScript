@@ -1,109 +1,19 @@
 {
   "fileTree": {
-    "name": "src",
+    "name": "dist",
     "type": "directory",
     "children": [
       {
-        "name": "snipescript.ts",
+        "name": "snipescript.js",
         "type": "file",
-        "errorFree": false,
-        "errors": [
-          {
-            "code": 7053,
-            "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-            "file": "src/snipescript.ts",
-            "location": {
-              "line": 31,
-              "character": 6
-            }
-          },
-          {
-            "code": 2345,
-            "message": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'.",
-            "file": "src/snipescript.ts",
-            "location": {
-              "line": 71,
-              "character": 8
-            }
-          },
-          {
-            "code": 7053,
-            "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-            "file": "src/snipescript.ts",
-            "location": {
-              "line": 80,
-              "character": 13
-            }
-          },
-          {
-            "code": 7053,
-            "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-            "file": "src/snipescript.ts",
-            "location": {
-              "line": 81,
-              "character": 10
-            }
-          },
-          {
-            "code": 7053,
-            "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-            "file": "src/snipescript.ts",
-            "location": {
-              "line": 84,
-              "character": 8
-            }
-          }
-        ]
+        "errorFree": true
+      },
+      {
+        "name": "snipescript.js.map",
+        "type": "file",
+        "errorFree": true
       }
     ]
   },
-  "errorTree": {
-    "src/snipescript.ts": [
-      {
-        "code": 7053,
-        "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-        "file": "src/snipescript.ts",
-        "location": {
-          "line": 31,
-          "character": 6
-        }
-      },
-      {
-        "code": 2345,
-        "message": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'.",
-        "file": "src/snipescript.ts",
-        "location": {
-          "line": 71,
-          "character": 8
-        }
-      },
-      {
-        "code": 7053,
-        "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-        "file": "src/snipescript.ts",
-        "location": {
-          "line": 80,
-          "character": 13
-        }
-      },
-      {
-        "code": 7053,
-        "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-        "file": "src/snipescript.ts",
-        "location": {
-          "line": 81,
-          "character": 10
-        }
-      },
-      {
-        "code": 7053,
-        "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\n  No index signature with a parameter of type 'string' was found on type '{}'.",
-        "file": "src/snipescript.ts",
-        "location": {
-          "line": 84,
-          "character": 8
-        }
-      }
-    ]
-  }
+  "errorTree": {}
 }
