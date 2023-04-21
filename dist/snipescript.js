@@ -125,7 +125,7 @@ function formatFileTree(tree, indent = "") {
     }
     else if (tree.type === "directory") {
         result += `${indent}📂 ${tree.name}\n`;
-        const childIndent = tree.name === "src" ? " ┣ " : " ┃ ";
+        const childIndent = tree.name === "src" ? " ┃ " : " ┣ ";
         for (const child of tree.children) {
             result += formatFileTree(child, indent + childIndent);
         }

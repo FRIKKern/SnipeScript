@@ -1,0 +1,3 @@
+ ┣ 📂 dist
+ ┣  ┣ 📜 snipescript.js
+ ┣  ┣ 📜 snipescript.js.map
